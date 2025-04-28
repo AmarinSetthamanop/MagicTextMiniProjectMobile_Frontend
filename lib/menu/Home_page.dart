@@ -136,7 +136,8 @@ class _Home_PageState extends State<Home_Page> {
               ),
               // แสดงชื่อของรูปภาพ
               title: Text(
-                'Name: ${photos!.photos[index].name}',
+                // 'Name: ${photos!.photos[index].name}',
+                '${photos!.photos[index].name}',
                 style: TextStyle(color: Colors.black, fontSize: 10),
               ),
               // ปุ่มแปลงข้อความในภาพ และ ลบภาพ

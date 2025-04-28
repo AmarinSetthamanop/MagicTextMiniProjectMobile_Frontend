@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class Service {
   // api สำหรับทดสอบบนเครื่องตัวเอง ต้องเป็น IP ของ เน็จที่เชื่อมต่อ ณ ขณะนั้น (แนะนำให้ใช้ IP เน็ตมือถือ)
-  // static String url = 'http://192.168.124.29:8000';
+  // static String url = 'http://192.168.1.50:8000';
 
   // IP ของ api ที่ run บน server
   static String url = 'https://magic-text-mini-project-mobile-backend.onrender.com';
@@ -106,7 +106,8 @@ class Service {
         "name": name,
         "email": name_or_email,
         "password": password,
-        "photo": photo
+        // ignore: unnecessary_null_comparison
+        "photo": (photo != null) ? photo : '' // ตรวจสอบว่า photo เป็น null หรือไม่
       };
       // เรียก api
       try {
@@ -117,6 +118,8 @@ class Service {
         );
         if (response.statusCode == 200) {
           print('User name: ${response.body}');
+          // login ทันทีเมือ register เสร็จ
+          await login(name_or_email, password);
           return true;
         } else {
           return false;
@@ -368,7 +371,7 @@ class Service {
         headers: {'Content-Type': 'application/json; charset=UTF-8'},
       );
       if (response.statusCode == 200) {
-        print('sent Meaaged...');
+        print('sent Messaged...');
       } else {
         print("sent Message Error...");
       }

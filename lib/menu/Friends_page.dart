@@ -109,7 +109,8 @@ class _Friends_PageState extends State<Friends_Page> {
               ),
               // แสดงชื่อของ เพื่อน
               title: Text(
-                'Name: ${friends!.friends[index].name}',
+                // 'Name: ${friends!.friends[index].name}',
+                '${friends!.friends[index].name}',
                 style: TextStyle(color: Colors.black, fontSize: 10),
               ),
               // ปุ่ม แชท และ ลบเพื่อน

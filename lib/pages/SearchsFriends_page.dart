@@ -131,7 +131,8 @@ class _SearchsFriends_Page extends State<SearchsFriends_Page> {
               ),
               // แสดงชื่อ
               title: Text(
-                'Name: ${notFriends!.notFriends[index].name}',
+                // 'Name: ${notFriends!.notFriends[index].name}',
+                '${notFriends!.notFriends[index].name}',
                 style: TextStyle(color: Colors.black, fontSize: 10),
               ),
               // ปุ่มเพิ่มเพื่อน

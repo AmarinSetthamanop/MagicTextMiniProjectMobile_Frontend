@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Service.dart';
+import 'package:frontend/menu/Menu_main.dart';
 import 'package:frontend/pages/Login_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
@@ -123,6 +124,10 @@ class _Register_PageState extends State<Register_Page> {
                                       borderRadius: BorderRadius.circular(18.0),
                                     ))),
                                 onPressed: () async {
+                                  print(_nameController.text);
+                                  print(_name_or_emailController.text);
+                                  print(_passwordController.text);
+                                  print(_photo);
                                   bool isLogin = await Service.register(
                                       _nameController.text,
                                       _name_or_emailController.text,
@@ -130,14 +135,20 @@ class _Register_PageState extends State<Register_Page> {
                                       _photo);
                                   // ถ้าใส่ข้อมูลภูกต้อง ให้ไปหน้า Menu_Main (bottomNavigationBar) โดยจะแสดงหน้า Home_Page เป็นหน้าแรก
                                   if (isLogin) {
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             const Login_Page()));
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                Login_Page()));
+                                                const Menu_Main()));
                                   } else {
                                     // ถ้าใส่ข้อมูล Login ผืดก็ให้อยู่หน้าเดิม
                                     setState(() {});
+                                    print('ไม่สามารถ register ได้');
                                   }
                                 },
                                 child: Text('REGISTER'),
